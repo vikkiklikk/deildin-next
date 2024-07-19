@@ -1,10 +1,11 @@
-import { pgTable, text, timestamp } from "drizzle-orm/pg-core"
+import { pgTable, text, timestamp } from "drizzle-orm/pg-core";
 
 export const userTable = pgTable("user", {
   id: text("id").primaryKey(),
   username: text("username").notNull().unique(),
   hashedPassword: text("hashed_password"),
-})
+  role: text("role"),
+});
 
 export const sessionTable = pgTable("session", {
   id: text("id").primaryKey(),
@@ -15,4 +16,4 @@ export const sessionTable = pgTable("session", {
     withTimezone: true,
     mode: "date",
   }).notNull(),
-})
+});
